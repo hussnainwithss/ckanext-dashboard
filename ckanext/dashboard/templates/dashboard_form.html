@@ -1,7 +1,7 @@
 {% import 'macros/form.html' as form %}
 {% resource 'dashboard-view/form' %}
 
-{% macro filtersInputs(name, selectName, inputName, label='', options='', error='', filters={}, classes=[], attrs={}, is_required=false) %}
+<!--{% macro filtersInputs(name, selectName, inputName, label='', options='', error='', filters={}, classes=[], attrs={}, is_required=false) %}
   {% set classes = (classes|list) %}
   {% do classes.append('control-select') %}
 
@@ -46,7 +46,7 @@
               label=_('Allowed Filters'), options=fields, filters=filters, classes=["control-filters"])
       }}
     </div>
-{% endif %}
+{% endif %}-->
 
 <div class="dashboard-view-edit" data-module="dashboard-view-edit" data-module-size="{{h.dashboard_size()}}">
   <hr>
@@ -68,10 +68,10 @@
     </ul>
   </div>
 
-  <div class="btn-group pull-right control-small">
-    <input id="dashboard-view-add-url-input" class="input-button" name='added_view_id' value="" placeholder="URL of view">
-    <a id="dashboard-view-add-url-button" href="#" class="btn btn-primary"> {{ _('Add widget from url') }} </a>
+  <div class="input-group pull-right">
+	<!-- TODO: minor changes to styling of button/input -->
+    <input id="dashboard-view-add-url-input" class="form-control" style="width:auto" name='added_view_id' value="" placeholder="URL of view">
+    <a id="dashboard-view-add-url-button" href="#" class="form-control btn btn-primary" style="width:fit-content;"> {{ _('Add widget from url') }} </a>
   </div>
-
   <input type="hidden" name="json" value="{{ data.get('json', []) }}">
 </div>

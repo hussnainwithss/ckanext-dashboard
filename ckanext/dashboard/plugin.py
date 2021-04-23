@@ -27,7 +27,8 @@ class DashboardView(p.SingletonPlugin):
         toolkit.add_resource('resources', 'dashboard-view')
 
     def configure(self, config):
-        self.size = int(config.get('ckan.dashboard.size', 130))
+        ## TODO: switch ckan config name to ckanext
+        self.size = int(config.get('ckanext.dashboard.size', 130))
 
     def get_size(self):
         return self.size
@@ -227,8 +228,12 @@ class DashboardView(p.SingletonPlugin):
 
 def parse_filter_params():
     filters = collections.defaultdict(list)
-    filter_string = dict(p.toolkit.request.GET).get('filters', '')
-    for filter in filter_string.split('|'):
+    ## TODO: Depricated method: use request.params and get filters as list object
+    #filter_string = dict(p.toolkit.request.GET).get('filters', '')
+    filter_string = dict(p.toolkit.request.params).get('filters', '')
+    ## TODO: No need to split since it is a list and not a string
+    #for filter in filter_string.split('|'):
+    for filter in filter_string:
         if filter.count(':') != 1:
             continue
         key, value = filter.split(':')
