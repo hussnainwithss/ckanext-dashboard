@@ -8,6 +8,7 @@ ignore_empty = toolkit.get_validator('ignore_empty')
 ignore = toolkit.get_validator('ignore')
 not_empty = toolkit.get_validator('not_empty')
 ignore_missing = toolkit.get_validator('ignore_missing')
+unicode = toolkit.get_validator('unicode_safe')
 aslist = toolkit.aslist
 
 log = logging.getLogger(__name__)
@@ -41,7 +42,8 @@ class DashboardView(p.SingletonPlugin):
                 'title': 'Dashboard',
                 'icon': 'dashboard',
                 'iframed': False,
-                'schema': {'json': [ignore_empty, unicode],
+                'schema': {'json': [ignore_empty, unicode
+                                   ],
                            'added_view_id': [ignore],
                            'user_filter_names': [ignore_missing],
                            'user_filter_fields': [ignore_missing]
